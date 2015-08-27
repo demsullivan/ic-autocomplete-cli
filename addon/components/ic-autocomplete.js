@@ -261,7 +261,7 @@ export default Ember.Component.extend({
    * @method handleKeydown
    * @private
    */
- 
+
   handleKeydown: function(event) {
     var map = this.get('keydownMap');
     var method = map[event.keyCode];
@@ -303,6 +303,11 @@ export default Ember.Component.extend({
     if (!this.get('isOpen') || !this.get('options.length')) {
       return;
     }
+
+    if (!this.get('autocomplete')) {
+      return;
+    }
+
     if (this.get('isBackspacing')) {
       this.set('isBackspacing', false);
       return;
